@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import ContactList from "../components/ContactList/ContactList";
 import SearchBox from "../components/SearchBox/SearchBox";
@@ -16,29 +16,28 @@ function App() {
   const [contacts, setContacts] = useState(initialContacts);
   const [filter, setFilter] = useState("");
 
-  // Функция для обновления состояния контактов
-  const updateContacts = (newContacts) => {
-    setContacts(newContacts);
-    localStorage.setItem(LS_CONTACTS_KEY, JSON.stringify(newContacts));
+  useEffect(() => {
+    localStorage.setItem(LS_CONTACTS_KEY, JSON.stringify(contacts));
+  }, [contacts]);
+  const handleAddContact = (newContact) => {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
   };
 
-  // Обработчик изменения в поле поиска
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+  const handleDeleteContact = (id) => {
+    setContacts((prevContacts) =>
+      prevContacts.filter((contact) => contact.id !== id)
+    );
   };
-
-  // Фильтрация контактов по введенному значению
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-
   return (
-    <div className="app-container">
-      <h1>Contacts App</h1>
-      <SearchBox value={filter} onChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts} />
-      <ContactForm contacts={contacts} onUpdateContacts={updateContacts} />
-    </div>
+    <>
+      <h1>Phone book</h1>
+      <ContactForm onAdd={handleAddContact} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={filteredContacts} onDelete={handleDeleteContact} />
+    </>
   );
 }
 

@@ -1,0 +1,24 @@
+/* SearchBox.module.css */
+.searchBoxContainer {
+  margin-bottom: 20px;
+}
+
+.searchLabel {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}

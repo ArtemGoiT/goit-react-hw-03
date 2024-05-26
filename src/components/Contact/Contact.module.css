@@ -1,0 +1,45 @@
+/* Contact.module.css */
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.contact div {
+  display: flex;
+  align-items: center;
+}
+
+.contactText {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.contactText span,
+.contactText a {
+  margin-left: 5px;
+}
+
+button {
+  background-color: #ff4d4f;
+  color: rgb(16, 9, 124);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d11a2a;
+}
+
+button:focus {
+  outline: none;
+}

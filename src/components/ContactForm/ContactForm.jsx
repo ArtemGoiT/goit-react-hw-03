@@ -6,13 +6,14 @@ import { nanoid } from "nanoid";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'The "Name" is too Short!')
-    .max(50, 'The "Name" is too Long!')
-    .required('The "Name" is Required field!'),
+    .min(3, "Имя слишком короткое, должно быть не менее 3 символов")
+    .max(50, "Имя слишком длинное, должно быть не более 50 символов")
+    .required('Поле "Имя" обязательно для заполнения'),
   number: Yup.string()
-    .min(3, 'The "Number" is too Short!')
-    .max(50, 'The "Number" is too Long!')
-    .required('The "Number" is Required field!'),
+    .matches(/^[0-9]+$/, "Номер должен состоять только из цифр")
+    .min(10, "Номер телефона должен содержать не менее 10 цифр")
+    .max(15, "Номер телефона должен содержать не более 15 цифр")
+    .required('Поле "Номер" обязательно для заполнения'),
 });
 
 const initialValues = {
